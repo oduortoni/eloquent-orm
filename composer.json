@@ -1,0 +1,20 @@
+{
+    "name": "oduortoni/erm",
+    "description": "Eloquent ORM fundamentals",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "toni"
+        }
+    ],
+    "require": {
+        "php-di/php-di": "^7.1",
+        "monolog/monolog": "^3.9"
+    }
+}
