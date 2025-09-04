@@ -18,6 +18,9 @@
     ],
     "require": {
         "php-di/php-di": "^7.1",
-        "monolog/monolog": "^3.9"
+        "monolog/monolog": "^3.9",
+        "illuminate/database": "^12.28",
+        "illuminate/filesystem": "^12.28",
+        "illuminate/console": "^12.28"
     }
 }

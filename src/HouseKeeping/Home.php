@@ -3,6 +3,7 @@
 namespace ERM\HouseKeeping;
 
 use ERM\App\Controllers\Controller;
+use ERM\Domains\Users\User;
 
 class Home extends Controller
 {
@@ -21,11 +22,9 @@ class Home extends Controller
         $content = ob_get_clean();
         echo $content;
     }
-    
+
     public function store(array $body)
     {
-        $this->logger->info("Form submitted", $body);
-
         $name = $body['name'] ?? null;
         $email = $body['email'] ?? null;
 
@@ -34,7 +33,14 @@ class Home extends Controller
             return;
         }
 
-        echo "Form submitted successfully! Name: {$name}, Email: {$email}";
+        $user = User::create([
+            'name' => $name,
+            'email' => $email,
+        ]);
+
+        $user->logCreation();
+
+        echo "User created successfully! ID: {$user->id}";
     }
 
     public function show(string $name, string $ok) {
