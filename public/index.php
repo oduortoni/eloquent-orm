@@ -18,9 +18,6 @@ $container = $containerBuilder->build();
 
 $app = $container->get(App::class);
 
-$app->get("/", [Home::class, 'index']);
-$app->get('/create', [Home::class, 'create']);
-$app->post('/store', [Home::class, 'store']);
-$app->get('/{name}/strip/{ok}', [Home::class, 'show']);
+require __DIR__ . '/../routes/web.php';
 
 $app->run();
