@@ -5,8 +5,11 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
-        }
+            "ERM\\": "src/"
+        },
+        "files": [
+            "bootstrap.php"
+        ]
     },
     "authors": [
         {
