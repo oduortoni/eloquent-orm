@@ -16,6 +16,9 @@
             "name": "toni"
         }
     ],
+    "scripts": {
+        "migrate": "php migrate.php"
+    },
     "require": {
         "php-di/php-di": "^7.1",
         "monolog/monolog": "^3.9",

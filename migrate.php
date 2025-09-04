@@ -26,12 +26,12 @@ $capsule->bootEloquent();
 Facade::setFacadeApplication(['db.schema' => $capsule->getConnection()->getSchemaBuilder()]);
 
 $migrationsPath = __DIR__ . '/database/migrations';
-echo "PATH: {$migrationsPath}\n";
 $files = glob($migrationsPath . '/*.php');
 
 foreach ($files as $file) {
     echo "Running migration: " . basename($file) . "\n";
     $migration = require $file;
+    $migration->down();
     $migration->up();
     echo "Completed: " . basename($file) . "\n";
 }
