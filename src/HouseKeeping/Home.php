@@ -36,4 +36,8 @@ class Home extends Controller
 
         echo "Form submitted successfully! Name: {$name}, Email: {$email}";
     }
+
+    public function show(string $name, string $ok) {
+        echo "Hello, {$name} said {$ok}!";
+    }
 }
