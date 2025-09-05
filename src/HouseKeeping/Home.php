@@ -8,11 +8,7 @@ use ERM\Domains\Users\User;
 class Home extends Controller
 {
     public function index() {
-        header('Content-Type: text/html');
-        ob_start();
-        include __DIR__ . '/views/index.php';
-        $content = ob_get_clean();
-        echo $content;
+        $this->response($this->view('pages.home', ['title' => 'Home']));
     }
 
     function create() {
