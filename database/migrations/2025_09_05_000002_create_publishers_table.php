@@ -15,7 +15,7 @@ return new class extends Migration
         });
 
         Schema::table('books', function (Blueprint $table) {
-            $table->foreignId('publisher_id')->constrained('publishers')->onDelete('cascade');
+            $table->foreignId('publisher_id')->on('publishers')->nullable()->onDelete('cascade');
         });
     }
 
