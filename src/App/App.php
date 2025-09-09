@@ -72,9 +72,11 @@ class App
         if (is_array($handler)) {
             [$class, $method] = $handler;
             $controller = $this->container->get($class);
-            $controller->$method(...$params);
+            $response = $controller->$method(...$params);
+            echo $response;
         } else {
-            $handler(...$params);
+            $response = $handler(...$params);
+            echo $response;
         }
     }
 
