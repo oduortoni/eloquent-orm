@@ -64,18 +64,16 @@ class App
                 $body = json_decode($raw, true) ?? [];
             }
 
-            var_dump($body);
-
-            $params['body'] = $body;
+            $params[] = $body;
         }
 
         if (is_array($handler)) {
             [$class, $method] = $handler;
             $controller = $this->container->get($class);
-            $response = $controller->$method(...$params);
+            $response = $controller->$method(...array_values($params));
             echo $response;
         } else {
-            $response = $handler(...$params);
+            $response = $handler(...array_values($params));
             echo $response;
         }
     }
