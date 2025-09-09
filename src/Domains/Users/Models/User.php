@@ -1,7 +1,6 @@
 <?php
-declare(strict_types=1);
 
-namespace ERM\Domains\Users;
+namespace ERM\Domains\Users\Models;
 
 use ERM\App\Models\Model;
 
@@ -11,6 +10,9 @@ class User extends Model
 
     protected $fillable = [
         'name',
-        'email'
+        'email',
+        'password',
     ];
+
+    protected $hidden = [];
 }
