@@ -14,7 +14,7 @@ class BooksService implements BooksServiceInterface {
         $this->repository = $repository;
     }
     public function getBooks(): array {
-        $books = $this->repository->getBooks();
+        $books = $this->repository->all();
         return $books;
     }
     public function save(array $data) {

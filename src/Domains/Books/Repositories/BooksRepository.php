@@ -37,7 +37,15 @@ class BooksRepository implements BooksRepositoryInterface {
         //
     }
 
-    public function all() {
-        //
+    public function all(): array {
+        $books = Book::all();
+
+        $result = [];
+        foreach($books as $book) {
+            $dto = new BookDTO($book->title, $book->description, $book->pages_count, $book->isbn, $book->author_id, $book->id);
+            $result[] = $dto->toArray();
+        }
+
+        return $result;
     }
 }

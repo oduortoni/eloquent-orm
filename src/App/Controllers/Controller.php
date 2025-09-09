@@ -24,4 +24,9 @@ class Controller
         http_response_code($status);
         echo $content;
     }
+
+    protected function redirect(string $url) {
+        header('Location: ' . $url);
+        die;
+    }
 }

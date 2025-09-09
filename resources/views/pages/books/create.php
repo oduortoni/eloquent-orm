@@ -1,7 +1,6 @@
 
 <?php
 $content = <<<HTML
-<h1>Create Book</h1>
 <form action="/books/store" method="post">
     <input type="text" name="title" placeholder="Title" required>
     <input type="text" name="description" placeholder="Description" required>

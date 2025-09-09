@@ -2,39 +2,46 @@
 
 namespace ERM\Domains\Books\Controllers;
 
-use ERM\App\View\View;
 use ERM\App\Auth\Auth;
+use ERM\App\Controllers\Controller;
 use ERM\Domains\Books\Interfaces\BooksControllerInterface;
 use ERM\Domains\Books\Interfaces\BooksServiceInterface;
+use Psr\Log\LoggerInterface;
 
-class BooksController implements BooksControllerInterface {
-    protected View $view;
+class BooksController extends Controller implements BooksControllerInterface
+{
     protected BooksServiceInterface $service;
 
     public function __construct(
-        View $view,
-        BooksServiceInterface $service,
+        BooksServiceInterface $service
     ) {
-        $this->view = $view;
         $this->service = $service;
     }
 
-    public function index() {
+    public function index(): string
+    {
         $title = 'Books';
         $books = $this->service->getBooks();
-        return $this->view->render('pages.books.index', array('title' => $title, 'books' => $books));
+
+        return $this->view('pages.books.index', [
+            'title' => $title,
+            'books' => $books,
+        ]);
     }
 
-    public function create() {
+    public function create(): string
+    {
         $title = 'Create A Book';
-        return $this->view->render('pages.books.create', array('title' => $title));
+        return $this->view('pages.books.create', [
+            'title' => $title,
+        ]);
     }
 
-    public function store(array $book) {
+    public function store(array $book): void
+    {
         $book['author_id'] = Auth::id() ?? 1;
-        $book['publisher_id'] = 1; // Default publisher
-        
+
         $this->service->save($book);
-        return redirect('/books');
+        $this->redirect("/books");
     }
 }
